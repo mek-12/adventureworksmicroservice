@@ -1,6 +1,0 @@
-@HumanResources.Api_HostAddress = http://localhost:5079
-
-GET {{HumanResources.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
