@@ -1,5 +1,4 @@
-﻿namespace HumanResources.Service.Domain.Entities
-{
+﻿namespace HumanResources.Service.Domain.Entities {
     public class Department {
         // Benzersiz kimlik (Primary Key)
         public short DepartmentID { get; private set; }
