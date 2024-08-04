@@ -86,3 +86,30 @@ We see that the file was successfully copied to `/var/backups` within the contai
 Next, to use the restore feature in `Azure Data Studio`, we check the "Enable preview features" option in the "Settings." Additionally, we see the restored database under "Databases."
 
 ![Picture](./assessts/images/Picture_2.png)
+
+## File Structure And Role Definitions of Microservice Applications According To The DDD (Domain-Driven Design) Pattern
+
+> We will create five microservices soon. But first, we need to define the file structures for these services. We know that most microservice projects are created using the DDD pattern.
+
+> Please look at the below and try to understand the folder structure I shared.
+
+AdventureWorks.sln (This is just a sln for development environment.)
+ ├── HumanResources.Service/
+ │   ├── Domain/
+ │   │   ├── Entities/
+ │   │   ├── ValueObjects/
+ │   │   ├── Aggregates/
+ │   │   ├── Services/
+ │   │   └── Exceptions/
+ │   ├── Application/
+ │   │   ├── Commands/
+ │   │   ├── Queries/
+ │   │   └── DTOs/
+ │   ├── Infrastructure/
+ │   │   ├── Persistence/
+ │   │   ├── Repositories/
+ │   │   └── ExternalServices/
+ │   ├── API/
+ │   │   ├── Controllers/
+ │   │   └── Middlewares/
+ │   └── Tests/
