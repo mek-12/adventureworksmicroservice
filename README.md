@@ -93,23 +93,4 @@ Next, to use the restore feature in `Azure Data Studio`, we check the "Enable pr
 
 > Please look at the below and try to understand the folder structure I shared.
 
-AdventureWorks.sln (This is just a sln for development environment.)
- ├── HumanResources.Service/
- │   ├── Domain/
- │   │   ├── Entities/
- │   │   ├── ValueObjects/
- │   │   ├── Aggregates/
- │   │   ├── Services/
- │   │   └── Exceptions/
- │   ├── Application/
- │   │   ├── Commands/
- │   │   ├── Queries/
- │   │   └── DTOs/
- │   ├── Infrastructure/
- │   │   ├── Persistence/
- │   │   ├── Repositories/
- │   │   └── ExternalServices/
- │   ├── API/
- │   │   ├── Controllers/
- │   │   └── Middlewares/
- │   └── Tests/
+![Picture](./assessts/images/Picture_3.png)
