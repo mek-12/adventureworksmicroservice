@@ -132,3 +132,7 @@ Next, to use the restore feature in `Azure Data Studio`, we check the "Enable pr
 ## TESTS
 ### Tests
 > Tests are units written to ensure the correctness and reliability of the application. This folder contains unit and integration tests for various layers of the system.
+
+
+Temp:
+Scaffold-DbContext "Data Source=localhost,15432;Initial Catalog=AdventureWorks2022;Persist Security Info=True;User ID=sa;Password=AdventurePass*123;Encrypt=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Infrastructure/Persistence -Context AdventureWorksContext
