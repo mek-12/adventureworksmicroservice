@@ -134,5 +134,14 @@ Next, to use the restore feature in `Azure Data Studio`, we check the "Enable pr
 > Tests are units written to ensure the correctness and reliability of the application. This folder contains unit and integration tests for various layers of the system.
 
 
+
+# Adapting Databases to Microservices
+
+> To use the AdventureWorks database in a microservices architecture, you can split tables between different microservices and even across different databases. However, Foreign Key (FK) constraints defined between schemas are an important consideration in this process. Maintaining Foreign Key relationships between tables spread across different databases is generally neither feasible nor recommended.
+
+> You will need to remove Foreign Key constraints between tables that you plan to move to different databases.
+
+
+
 Temp:
 Scaffold-DbContext "Data Source=localhost,15432;Initial Catalog=AdventureWorks2022;Persist Security Info=True;User ID=sa;Password=AdventurePass*123;Encrypt=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Infrastructure/Persistence -Context AdventureWorksContext
