@@ -94,3 +94,41 @@ Next, to use the restore feature in `Azure Data Studio`, we check the "Enable pr
 > Please look at the below and try to understand the folder structure I shared.
 
 ![Picture](./assessts/images/Picture_3.png)
+
+## DOMAIN
+### Entities
+> This folder contains the core entities that represent the business logic of the system. Entities are defined as long-lived business objects with a unique identity.
+### ValueObjects
+> Value objects are objects that do not have identities and are defined solely by their values. In this folder, various value objects in the system (such as Address, Email) are defined.
+### Agregates
+> This folder defines aggregates, which are components that contain multiple entities and are treated as a whole. An aggregate root is the access point for the other entities within this aggregate.
+### Services
+> This folder contains domain services that perform operations across entities. These services are used to implement business rules that affect multiple entities.
+### Exceptions
+> Custom exceptions used in the domain layer are defined in this folder. Error management related to the domain is handled through these exceptions.
+
+## APPLICATION
+### Commands
+> Commands are requests that represent an action in the system and change its state. Examples such as CreateEmployeeCommand may be found in this folder.
+### Queries
+> Queries are requests used to obtain data and typically do not alter the state of the system. For example, GetEmployeeByIdQuery.
+### DTOs (Data Transfer Objects)
+> DTOs are structures used to facilitate the transfer of data from one layer to another. In the application layer, these objects used for data transfer are defined here.
+
+## INFRASTRUCTURE
+### Persistence
+> This folder contains all components related to database access and persistence. Database connections and ORM (Object-Relational Mapping) configurations are located here.
+### Repositories
+> Repositories act as intermediaries between the data access layer and the domain layer. This folder includes repository interfaces and implementations where database operations are performed.
+### ExternalServices
+> Interaction with external services (such as third-party APIs) is carried out in this folder. Components used for integration with other systems are defined here.
+
+## API
+### Controllers
+> This folder defines the interaction points (API endpoints) between the application and the outside world. Controllers that handle incoming HTTP requests are found here.
+### Middlewares
+> Middleware are pieces of software that come into play during the processing of incoming requests, filtering or modifying them. This folder defines the middleware components used at the API level.
+
+## TESTS
+### Tests
+> Tests are units written to ensure the correctness and reliability of the application. This folder contains unit and integration tests for various layers of the system.

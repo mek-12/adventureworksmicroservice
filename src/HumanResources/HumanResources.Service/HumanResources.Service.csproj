@@ -8,12 +8,27 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="API\Controllers\" />
+    <Folder Include="API\Middlewares\" />
+    <Folder Include="Application\Commands\" />
+    <Folder Include="Application\DTOs\" />
+    <Folder Include="Application\Queries\" />
+    <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Exceptions\" />
+    <Folder Include="Domain\Aggregates\" />
+    <Folder Include="Domain\ValueObjects\" />
     <Folder Include="Domain\Services\" />
+    <Folder Include="Infrastructure\ExternalServices\" />
+    <Folder Include="Infrastructure\Persistence\" />
+    <Folder Include="Infrastructure\Repositories\DbContext\" />
   </ItemGroup>
 
 </Project>
