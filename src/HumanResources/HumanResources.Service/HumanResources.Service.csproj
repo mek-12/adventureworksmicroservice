@@ -28,7 +28,6 @@
     <Folder Include="Domain\ValueObjects\" />
     <Folder Include="Domain\Services\" />
     <Folder Include="Infrastructure\ExternalServices\" />
-    <Folder Include="Infrastructure\Persistence\" />
     <Folder Include="Infrastructure\Repositories\DbContext\" />
   </ItemGroup>
 

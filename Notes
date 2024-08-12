@@ -1,0 +1,7 @@
+HumanResources
++ Department
+    - Department tablosu sadece Bölümlerin bilgisini tutuyor. FK yok
+
++ Employee
+    - Çalşıanlar ile ilgili veriler tutmakla birlikte FK olarak Person.BusinessEntity e bağımlı. Api seviyesinde bağlamak lazım. FK VAR
+
