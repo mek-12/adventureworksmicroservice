@@ -52,3 +52,73 @@ Purchasing
     --ALTER TABLE [dbo].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID]
     --GO
 
+Sales
++ CountryRegionCurrency
+    --ALTER TABLE [dbo].[CountryRegionCurrency]  WITH CHECK ADD  CONSTRAINT [FK_CountryRegionCurrency_CountryRegion_CountryRegionCode] FOREIGN KEY([CountryRegionCode])
+    --REFERENCES [Person].[CountryRegion] ([CountryRegionCode])
+    --GO
+    --ALTER TABLE [dbo].[CountryRegionCurrency] CHECK CONSTRAINT [FK_CountryRegionCurrency_CountryRegion_CountryRegionCod
++ Customer
+    --ALTER TABLE [dbo].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Person_PersonID] FOREIGN KEY([PersonID])
+    --REFERENCES [Person].[Person] ([BusinessEntityID])
+    --GO
+    --ALTER TABLE [dbo].[Customer] CHECK CONSTRAINT [FK_Customer_Person_PersonID]
+    --GO
+
++ PersonCreditCard
+    --ALTER TABLE [dbo].[PersonCreditCard]  WITH CHECK ADD  CONSTRAINT [FK_PersonCreditCard_Person_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    --REFERENCES [Person].[Person] ([BusinessEntityID])
+    --GO
+    --ALTER TABLE [dbo].[PersonCreditCard] CHECK CONSTRAINT [FK_PersonCreditCard_Person_BusinessEntityID]
+    --GO
++ SalesOrderHeader
+    --ALTER TABLE [dbo].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_Address_BillToAddressID] FOREIGN KEY([BillToAddressID])
+    --REFERENCES [Person].[Address] ([AddressID])
+    --GO
+    --ALTER TABLE [dbo].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_Address_BillToAddressID]
+    --GO
+    --ALTER TABLE [dbo].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_Address_ShipToAddressID] FOREIGN KEY([ShipToAddressID])
+    --REFERENCES [Person].[Address] ([AddressID])
+    --GO
+    --ALTER TABLE [dbo].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_Address_ShipToAddressID]
+    --GO
+    --ALTER TABLE [dbo].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_ShipMethod_ShipMethodID] FOREIGN KEY([ShipMethodID])
+    --REFERENCES [Purchasing].[ShipMethod] ([ShipMethodID])
+    --GO
+    --ALTER TABLE [dbo].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_ShipMethod_ShipMethodID]
+    --GO
++ SalesPerson
+    --ALTER TABLE [dbo].[SalesPerson]  WITH CHECK ADD  CONSTRAINT [FK_SalesPerson_Employee_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    --REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+    --GO
+    --ALTER TABLE [dbo].[SalesPerson] CHECK CONSTRAINT [FK_SalesPerson_Employee_BusinessEntityID]
+    --GO
++ SalesTaxRate
+    --ALTER TABLE [dbo].[SalesTaxRate]  WITH CHECK ADD  CONSTRAINT [FK_SalesTaxRate_StateProvince_StateProvinceID] FOREIGN KEY([StateProvinceID])
+    --REFERENCES [Person].[StateProvince] ([StateProvinceID])
+    --GO
+    --ALTER TABLE [dbo].[SalesTaxRate] CHECK CONSTRAINT [FK_SalesTaxRate_StateProvince_StateProvinceID]
+    --GO
++ SalesTerritory
+    --ALTER TABLE [dbo].[SalesTerritory]  WITH CHECK ADD  CONSTRAINT [FK_SalesTerritory_CountryRegion_CountryRegionCode] FOREIGN KEY([CountryRegionCode])
+    --REFERENCES [Person].[CountryRegion] ([CountryRegionCode])
+    --GO
+    --ALTER TABLE [dbo].[SalesTerritory] CHECK CONSTRAINT [FK_SalesTerritory_CountryRegion_CountryRegionCode]
+    --GO
++ ShoppingCartItem
+    --ALTER TABLE [dbo].[ShoppingCartItem]  WITH CHECK ADD  CONSTRAINT [FK_ShoppingCartItem_Product_ProductID] FOREIGN KEY([ProductID])
+    --REFERENCES [Production].[Product] ([ProductID])
+    --GO
+    --ALTER TABLE [dbo].[ShoppingCartItem] CHECK CONSTRAINT [FK_ShoppingCartItem_Product_ProductID]
+    --GO
++ SpecialOfferProduct
+    --ALTER TABLE [dbo].[SpecialOfferProduct]  WITH CHECK ADD  CONSTRAINT [FK_SpecialOfferProduct_Product_ProductID] FOREIGN KEY([ProductID])
+    --REFERENCES [Production].[Product] ([ProductID])
+    --GO
+    --ALTER TABLE [dbo].[SpecialOfferProduct] CHECK CONSTRAINT [FK_SpecialOfferProduct_Product_ProductID]
++ Store
+    --ALTER TABLE [dbo].[Store]  WITH CHECK ADD  CONSTRAINT [FK_Store_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    --REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
+    --GO
+    --ALTER TABLE [dbo].[Store] CHECK CONSTRAINT [FK_Store_BusinessEntity_BusinessEntityID]
+    --GO
