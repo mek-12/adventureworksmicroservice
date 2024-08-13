@@ -21,3 +21,34 @@ Production
     --ALTER TABLE [dbo].[Document]  WITH CHECK ADD  CONSTRAINT [FK_Document_Employee_Owner] FOREIGN KEY([Owner])
     --REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
     --ALTER TABLE [dbo].[Document] CHECK CONSTRAINT [FK_Document_Employee_Owner]
+
+Purchasing
+
++ ProductVendor
+    --ALTER TABLE [dbo].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [FK_ProductVendor_Product_ProductID] FOREIGN KEY([ProductID])
+    --REFERENCES [Production].[Product] ([ProductID])
+    --GO
+    --ALTER TABLE [dbo].[ProductVendor] CHECK CONSTRAINT [FK_ProductVendor_Product_ProductID]
+    --GO
+    --ALTER TABLE [dbo].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [FK_ProductVendor_UnitMeasure_UnitMeasureCode] FOREIGN KEY([UnitMeasureCode])
+    --REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+    --GO
+    --ALTER TABLE [dbo].[ProductVendor] CHECK CONSTRAINT [FK_ProductVendor_UnitMeasure_UnitMeasureCod
++ PurchaseOrderDetail
+    --ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderDetail_Product_ProductID] FOREIGN KEY([ProductID])
+    --REFERENCES [Production].[Product] ([ProductID])
+    --GO
+    --ALTER TABLE [dbo].[PurchaseOrderDetail] CHECK CONSTRAINT [FK_PurchaseOrderDetail_Product_ProductID]
+
++ PurchaseOrderHeader
+    --ALTER TABLE [dbo].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID] FOREIGN KEY([EmployeeID])
+    --REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+    --ALTER TABLE [dbo].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID]
+    --GO
++ Vendor
+    --ALTER TABLE [dbo].[Vendor]  WITH CHECK ADD  CONSTRAINT [FK_Vendor_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    --REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
+    --GO
+    --ALTER TABLE [dbo].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID]
+    --GO
+
