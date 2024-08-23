@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Sales.Service.Infrastructure.Persistence;
 
-public partial class SalesContext : DbContext
-{
-    public SalesContext()
-    {
+public partial class SalesContext : DbContext {
+    public SalesContext() {
     }
 
     public SalesContext(DbContextOptions<SalesContext> options)
-        : base(options)
-    {
+        : base(options) {
     }
 
     public virtual DbSet<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
@@ -57,10 +52,8 @@ public partial class SalesContext : DbContext
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=localhost,15432;Initial Catalog=Sales;Persist Security Info=True;User ID=sa;Password=AdventurePass*123;Encrypt=True;Trust Server Certificate=True");
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<CountryRegionCurrency>(entity =>
-        {
+    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<CountryRegionCurrency>(entity => {
             entity.HasKey(e => new { e.CountryRegionCode, e.CurrencyCode }).HasName("PK_CountryRegionCurrency_CountryRegionCode_CurrencyCode");
 
             entity.ToTable("CountryRegionCurrency");
@@ -78,8 +71,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<CreditCard>(entity =>
-        {
+        modelBuilder.Entity<CreditCard>(entity => {
             entity.HasKey(e => e.CreditCardId).HasName("PK_CreditCard_CreditCardID");
 
             entity.ToTable("CreditCard");
@@ -92,8 +84,7 @@ public partial class SalesContext : DbContext
                 .HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<Currency>(entity =>
-        {
+        modelBuilder.Entity<Currency>(entity => {
             entity.HasKey(e => e.CurrencyCode).HasName("PK_Currency_CurrencyCode");
 
             entity.ToTable("Currency");
@@ -107,8 +98,7 @@ public partial class SalesContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<CurrencyRate>(entity =>
-        {
+        modelBuilder.Entity<CurrencyRate>(entity => {
             entity.HasKey(e => e.CurrencyRateId).HasName("PK_CurrencyRate_CurrencyRateID");
 
             entity.ToTable("CurrencyRate");
@@ -136,8 +126,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<Customer>(entity =>
-        {
+        modelBuilder.Entity<Customer>(entity => {
             entity.HasKey(e => e.CustomerId).HasName("PK_Customer_CustomerID");
 
             entity.ToTable("Customer");
@@ -162,8 +151,7 @@ public partial class SalesContext : DbContext
             entity.HasOne(d => d.Territory).WithMany(p => p.Customers).HasForeignKey(d => d.TerritoryId);
         });
 
-        modelBuilder.Entity<PersonCreditCard>(entity =>
-        {
+        modelBuilder.Entity<PersonCreditCard>(entity => {
             entity.HasKey(e => new { e.BusinessEntityId, e.CreditCardId }).HasName("PK_PersonCreditCard_BusinessEntityID_CreditCardID");
 
             entity.ToTable("PersonCreditCard");
@@ -179,8 +167,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<SalesOrderDetail>(entity =>
-        {
+        modelBuilder.Entity<SalesOrderDetail>(entity => {
             entity.HasKey(e => new { e.SalesOrderId, e.SalesOrderDetailId }).HasName("PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID");
 
             entity.ToTable("SalesOrderDetail");
@@ -212,8 +199,7 @@ public partial class SalesContext : DbContext
                 .HasConstraintName("FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID");
         });
 
-        modelBuilder.Entity<SalesOrderHeader>(entity =>
-        {
+        modelBuilder.Entity<SalesOrderHeader>(entity => {
             entity.HasKey(e => e.SalesOrderId).HasName("PK_SalesOrderHeader_SalesOrderID");
 
             entity.ToTable("SalesOrderHeader");
@@ -269,8 +255,7 @@ public partial class SalesContext : DbContext
             entity.HasOne(d => d.Territory).WithMany(p => p.SalesOrderHeaders).HasForeignKey(d => d.TerritoryId);
         });
 
-        modelBuilder.Entity<SalesOrderHeaderSalesReason>(entity =>
-        {
+        modelBuilder.Entity<SalesOrderHeaderSalesReason>(entity => {
             entity.HasKey(e => new { e.SalesOrderId, e.SalesReasonId }).HasName("PK_SalesOrderHeaderSalesReason_SalesOrderID_SalesReasonID");
 
             entity.ToTable("SalesOrderHeaderSalesReason");
@@ -288,8 +273,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<SalesPerson>(entity =>
-        {
+        modelBuilder.Entity<SalesPerson>(entity => {
             entity.HasKey(e => e.BusinessEntityId).HasName("PK_SalesPerson_BusinessEntityID");
 
             entity.ToTable("SalesPerson");
@@ -315,8 +299,7 @@ public partial class SalesContext : DbContext
             entity.HasOne(d => d.Territory).WithMany(p => p.SalesPeople).HasForeignKey(d => d.TerritoryId);
         });
 
-        modelBuilder.Entity<SalesPersonQuotaHistory>(entity =>
-        {
+        modelBuilder.Entity<SalesPersonQuotaHistory>(entity => {
             entity.HasKey(e => new { e.BusinessEntityId, e.QuotaDate }).HasName("PK_SalesPersonQuotaHistory_BusinessEntityID_QuotaDate");
 
             entity.ToTable("SalesPersonQuotaHistory");
@@ -336,8 +319,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<SalesReason>(entity =>
-        {
+        modelBuilder.Entity<SalesReason>(entity => {
             entity.HasKey(e => e.SalesReasonId).HasName("PK_SalesReason_SalesReasonID");
 
             entity.ToTable("SalesReason");
@@ -350,8 +332,7 @@ public partial class SalesContext : DbContext
             entity.Property(e => e.ReasonType).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<SalesTaxRate>(entity =>
-        {
+        modelBuilder.Entity<SalesTaxRate>(entity => {
             entity.HasKey(e => e.SalesTaxRateId).HasName("PK_SalesTaxRate_SalesTaxRateID");
 
             entity.ToTable("SalesTaxRate");
@@ -368,8 +349,7 @@ public partial class SalesContext : DbContext
             entity.Property(e => e.TaxRate).HasColumnType("smallmoney");
         });
 
-        modelBuilder.Entity<SalesTerritory>(entity =>
-        {
+        modelBuilder.Entity<SalesTerritory>(entity => {
             entity.HasKey(e => e.TerritoryId).HasName("PK_SalesTerritory_TerritoryID");
 
             entity.ToTable("SalesTerritory");
@@ -394,8 +374,7 @@ public partial class SalesContext : DbContext
                 .HasColumnName("SalesYTD");
         });
 
-        modelBuilder.Entity<SalesTerritoryHistory>(entity =>
-        {
+        modelBuilder.Entity<SalesTerritoryHistory>(entity => {
             entity.HasKey(e => new { e.BusinessEntityId, e.StartDate, e.TerritoryId }).HasName("PK_SalesTerritoryHistory_BusinessEntityID_StartDate_TerritoryID");
 
             entity.ToTable("SalesTerritoryHistory");
@@ -420,8 +399,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<ShoppingCartItem>(entity =>
-        {
+        modelBuilder.Entity<ShoppingCartItem>(entity => {
             entity.HasKey(e => e.ShoppingCartItemId).HasName("PK_ShoppingCartItem_ShoppingCartItemID");
 
             entity.ToTable("ShoppingCartItem");
@@ -440,8 +418,7 @@ public partial class SalesContext : DbContext
                 .HasColumnName("ShoppingCartID");
         });
 
-        modelBuilder.Entity<SpecialOffer>(entity =>
-        {
+        modelBuilder.Entity<SpecialOffer>(entity => {
             entity.HasKey(e => e.SpecialOfferId).HasName("PK_SpecialOffer_SpecialOfferID");
 
             entity.ToTable("SpecialOffer");
@@ -461,8 +438,7 @@ public partial class SalesContext : DbContext
             entity.Property(e => e.Type).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<SpecialOfferProduct>(entity =>
-        {
+        modelBuilder.Entity<SpecialOfferProduct>(entity => {
             entity.HasKey(e => new { e.SpecialOfferId, e.ProductId }).HasName("PK_SpecialOfferProduct_SpecialOfferID_ProductID");
 
             entity.ToTable("SpecialOfferProduct");
@@ -481,8 +457,7 @@ public partial class SalesContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<Store>(entity =>
-        {
+        modelBuilder.Entity<Store>(entity => {
             entity.HasKey(e => e.BusinessEntityId).HasName("PK_Store_BusinessEntityID");
 
             entity.ToTable("Store");
